@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:elevation="4dp"
+        android:minHeight="60dp"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageButton
+            android:id="@+id/ib_menu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            style="@style/Base.Widget.AppCompat.ActionButton"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_view_headline"
+            />
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/tv_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            tools:text="CURIOSITY"
+            />
+
+
+        <Button
+            tools:visibility="visible"
+            android:visibility="gone"
+            android:id="@+id/btn_date"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            tools:text="2015-12-22"
+            style="@style/Base.Widget.AppCompat.ActionButton"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+</merge>

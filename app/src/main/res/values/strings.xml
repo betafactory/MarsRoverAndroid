@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MarsScope</string>
+
+    <!-- Curosity-->
+    <string name="curisosity_desc">
+        Curiosity is a car-sized robotic rover exploring Gale Crater on Mars as part of NASA\'s Mars Science Laboratory mission (MSL).
+    </string>
+
+    <!-- OPPORTUNITY-->
+    <string name="opportunity_desc">
+        Opportunity is a robotic rover active on Mars since 2004. It landed in Meridiani Planum on January 25, 2004.
+    </string>
+
+    <!-- spirit-->
+    <string name="spirit_desc">
+        Spirit, also known as MER-A (Mars Exploration Rover A) or MER-2, is a robotic rover on Mars, active from 2004 to 2010. Spirit became stuck in soft soil.
+    </string>
+
+</resources>
