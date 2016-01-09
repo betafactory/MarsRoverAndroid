@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    >
-
-
-    <ImageView
-        android:id="@+id/iv_detail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:background="@android:color/black"
-        android:scaleType="centerInside"
-        />
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <include
         android:id="@+id/toolbar_detail"
         layout="@layout/toolbar_detail"/>
 
-</FrameLayout>
+
+    <com.androidyug.marsscope.ui.detail.ScaleImageView
+        android:id="@+id/iv_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        tools:src="@drawable/rover_opportunity"
+        />
+
+
+
+</LinearLayout>

@@ -69,4 +69,17 @@
 
    </LinearLayout>
 
+    <ImageButton
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/ib_reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_reload"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        style="@style/Base.Widget.AppCompat.ActionButton"
+        />
+
 </android.support.v7.widget.CardView>

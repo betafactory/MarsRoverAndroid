@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         ImageView ivPhoto;
         TextView tvCamera;
         TextView tvCameraFullname;
+        ImageButton ibReload;
 
         public PhotoViewHolder(View view) {
             super(view);
@@ -52,6 +54,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             ivPhoto = (ImageView) view.findViewById(R.id.iv_photo);
             tvCamera = (TextView) view.findViewById(R.id.tv_camera);
             tvCameraFullname = (TextView) view.findViewById(R.id.tv_camera_fullname);
+            ibReload = (ImageButton) view.findViewById(R.id.ib_reload);
+            ibReload.setOnClickListener(this);
         }
 
         public void setItem(Photo p, final Context ctx){
@@ -59,31 +63,39 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             this.context = ctx;
 
             Camera c = p.getCamera();
-            Picasso.with(ctx).load(p.getImgSrc()).error(R.drawable.ic_action_reload).into(ivPhoto, new Callback() {
+
+
+            Picasso.with(ctx).load(p.getImgSrc()).into(ivPhoto, new Callback() {
                 @Override
                 public void onSuccess() {
                     // TODO: 1/6/2016  hide the progress
+                    ibReload.setVisibility(View.GONE);
                     Toast.makeText(ctx, "Image loaded", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onError() {
-                    // TODO: 1/6/2016 show the button to retry
+                    ibReload.setVisibility(View.VISIBLE);
                     Toast.makeText(ctx, "Image not able to load", Toast.LENGTH_SHORT).show();
                 }
             });
+
             tvCameraFullname.setText("Photo taken by " + c.getFullName());
             tvCamera.setText(c.getName());
         }
 
         @Override
         public void onClick(View v) {
+            // TODO: 1/8/2016 set on click on button  to call
+
             Toast.makeText(context, "position "+ getLayoutPosition(), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(context, PhotoDetailActivity.class);
             i.putExtra(PhotoDetailFragment.INTENT_PHOTO_DETAIL,photo);
             context.startActivity(i);
         }
     }
+
+
 
 
     @Override

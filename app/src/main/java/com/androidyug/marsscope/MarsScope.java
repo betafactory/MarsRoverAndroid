@@ -10,17 +10,18 @@ import com.squareup.otto.ThreadEnforcer;
  */
 public class MarsScope extends Application{
 
-    public static Bus bus;
+//    public static Bus bus;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        bus = new Bus(ThreadEnforcer.ANY);
+//        bus = new Bus(ThreadEnforcer.ANY);
 
     }
 
-    public static Bus provideBus(){
-        return bus;
-    }
+//    public static Bus provideBus(){
+//        return bus;
+//    }
+
 }
