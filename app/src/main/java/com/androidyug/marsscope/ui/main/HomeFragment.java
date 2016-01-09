@@ -1,10 +1,14 @@
 package com.androidyug.marsscope.ui.main;
 
 import android.app.*;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -35,6 +39,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidyug.marsscope.NetworkConn;
 import com.androidyug.marsscope.R;
 import com.androidyug.marsscope.common.Constant;
 import com.androidyug.marsscope.common.Utils;
@@ -93,6 +98,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     ProgressDialog mProgressDialog;
 
     Bus bus;
+    NetworkConn mNetworkConn;
 
 //    requird by date picker
     Date mLandingDate = Utils.stringToDate(Constant.CURIOSITY_LANDING_DATE);
@@ -119,6 +125,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         bus = new Bus(ThreadEnforcer.ANY);
         llm = new LinearLayoutManager(getActivity());
+
 
 
 //        getActivity().
@@ -168,6 +175,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onStart();
 
         bus.register(this);
+
     }
 
     @Override
@@ -181,6 +189,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onPause();
 
         saveToSharedPref(mRoverId, mQueryDate);
+        getActivity().unregisterReceiver(mNetworkConn);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mNetworkConn = new NetworkConn(llRoot);
+        getActivity().registerReceiver(mNetworkConn,
+                new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
     @Nullable
@@ -250,8 +267,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             mLoading = false;
                             Log.d("HomeFragment", "Last Item Wow !");
                             if (mMorePage) {
-
-                                queryApi(mRoverId, mQueryDate, mPage);
+                                // make a query to load more
+                                marsDataSourceImple.makeCallToService(mRoverId, mPage, mQueryDate);
                                 Snackbar snackbar = Snackbar.make(llRoot, "LOADING MORE PHOTOS", Snackbar.LENGTH_LONG)
                                         .setAction("CANCEL", new View.OnClickListener() {
                                             @Override
@@ -282,6 +299,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    void initilizeRecyclerView(List<Photo> dataset){
+
+        mPhotoAdapter = new PhotoAdapter(getActivity(), dataset);
+        rvHome.setLayoutManager(llm);
+        rvHome.addItemDecoration(new VerticalSpace(20));
+        rvHome.setAdapter(mPhotoAdapter);
+    }
+
 
     @Subscribe
     public void onRespponse(Dataset dataset){
@@ -294,8 +319,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
 
-        if (mPhotoAdapter == null){
+        if (mDataList == null){ // mPhotoAdapter == null
+
             mDataList = photos;
+            initilizeRecyclerView(mDataList);
 
             if (photos.size()>0) {
 
@@ -307,20 +334,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Log.d(LOG_TAG, "mMaxDate " + mMaxDate);
 
 
-             if (mDataList.size()==25) {
+            if (photos.size()==25) {
                 mPage++;
                 mMorePage = true;
             }
 
 
-            mPhotoAdapter = new PhotoAdapter(getActivity(), mDataList);
-            rvHome.setLayoutManager(llm);
-            rvHome.addItemDecoration(new VerticalSpace(20));
-            rvHome.setAdapter(mPhotoAdapter);
-            mPhotoAdapter.notifyDataSetChanged();
+//            mPhotoAdapter = new PhotoAdapter(getActivity(), mDataList);
+//            rvHome.setLayoutManager(llm);
+//            rvHome.addItemDecoration(new VerticalSpace(20));
+//            rvHome.setAdapter(mPhotoAdapter);
+           // mPhotoAdapter.notifyDataSetChanged();
 
 
-        } else {
+        } else { // if mDatalist !=null append photo into this
 
             if (photos.size()==25){
                 mPage++;
@@ -372,7 +399,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 DatePickerDialog dialog = new DatePickerDialog(getActivity(),2, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        mPhotoAdapter = null;
+
+                        mDataList.clear();
+                        mPhotoAdapter.notifyDataSetChanged();
                         mPage = 1;
                         mMorePage = false;
 
@@ -424,7 +453,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             mPage = 1;
             mMorePage = false;
-            mPhotoAdapter = null;
+
+            mDataList.clear();
+            mPhotoAdapter.notifyDataSetChanged();
+
             btnDate.setVisibility(View.GONE);
             btnDate.setText(mQueryDate);
 
@@ -451,5 +483,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         progressBar.setVisibility(View.VISIBLE);
         marsDataSourceImple.makeCallToService(roverId, page, qdate);
     }
+
+
+
 
 }
