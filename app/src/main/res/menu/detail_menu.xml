@@ -4,11 +4,9 @@
 
     <item android:id="@+id/action_share"
         android:icon="@drawable/ic_action_share"
-        app:showAsAction="always"
         android:title="Fav" />
 
     <item android:id="@+id/action_save"
         android:icon="@drawable/ic_action_save"
-        app:showAsAction="always"
         android:title="Fav" />
 </menu>

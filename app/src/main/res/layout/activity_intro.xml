@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.androidyug.marsscope.ui.intro.IntroActivity">
+
+    <com.androidyug.marsscope.ui.intro.VerticalViewPager
+        android:id="@+id/vp_intro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.androidyug.marsscope.ui.intro.VerticalViewPager>
+
+</RelativeLayout>

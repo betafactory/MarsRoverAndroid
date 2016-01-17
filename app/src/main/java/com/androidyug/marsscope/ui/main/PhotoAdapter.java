@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         TextView tvCamera;
         TextView tvCameraFullname;
         ImageButton ibReload;
+        Boolean isPhotoLoaded = false;
+        ProgressBar lineProgressBar;
 
         public PhotoViewHolder(View view) {
             super(view);
@@ -55,6 +58,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             tvCamera = (TextView) view.findViewById(R.id.tv_camera);
             tvCameraFullname = (TextView) view.findViewById(R.id.tv_camera_fullname);
             ibReload = (ImageButton) view.findViewById(R.id.ib_reload);
+            lineProgressBar = (ProgressBar) view.findViewById(R.id.line_progress);
             ibReload.setOnClickListener(this);
         }
 
@@ -64,34 +68,74 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
             Camera c = p.getCamera();
 
-
-            Picasso.with(ctx).load(p.getImgSrc()).into(ivPhoto, new Callback() {
-                @Override
-                public void onSuccess() {
-                    // TODO: 1/6/2016  hide the progress
-                    ibReload.setVisibility(View.GONE);
-                    Toast.makeText(ctx, "Image loaded", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onError() {
-                    ibReload.setVisibility(View.VISIBLE);
-                    Toast.makeText(ctx, "Image not able to load", Toast.LENGTH_SHORT).show();
-                }
-            });
+            loadPhotoIntoView();
 
             tvCameraFullname.setText("Photo taken by " + c.getFullName());
             tvCamera.setText(c.getName());
         }
 
+        void hideProgress(){
+            if (lineProgressBar!=null){
+                lineProgressBar.setVisibility(View.GONE);
+            }
+        }
+
+        void showProgress(){
+            lineProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        void loadPhotoIntoView(){
+            showProgress();
+            Picasso.with(context).load(photo.getImgSrc()).into(ivPhoto, new Callback() {
+                @Override
+                public void onSuccess() {
+                    // TODO: 1/6/2016  hide the progress
+
+                    isPhotoLoaded = true;
+                    ibReload.setVisibility(View.GONE);
+                    hideProgress();
+                    Toast.makeText(context, "Image loaded", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onError() {
+
+                    hideProgress();
+                    isPhotoLoaded = false;
+                    ibReload.setVisibility(View.VISIBLE);
+                    Toast.makeText(context, "Image not able to load", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
         @Override
         public void onClick(View v) {
-            // TODO: 1/8/2016 set on click on button  to call
 
-            Toast.makeText(context, "position "+ getLayoutPosition(), Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(context, PhotoDetailActivity.class);
-            i.putExtra(PhotoDetailFragment.INTENT_PHOTO_DETAIL,photo);
-            context.startActivity(i);
+            int id = v.getId();
+
+            switch (id){
+                case R.id.cv_photo:
+
+                    if (!isPhotoLoaded){
+                        Toast.makeText(context, "please let the photo to load", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    Toast.makeText(context, "position "+ getLayoutPosition(), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(context, PhotoDetailActivity.class);
+                    i.putExtra(PhotoDetailFragment.INTENT_PHOTO_DETAIL, photo);
+                    context.startActivity(i);
+                    break;
+
+                case R.id.ib_reload:
+                    ibReload.setVisibility(View.GONE);
+                   loadPhotoIntoView();
+                    break;
+
+            }
+
+
         }
     }
 

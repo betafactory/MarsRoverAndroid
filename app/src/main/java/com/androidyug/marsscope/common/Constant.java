@@ -19,4 +19,6 @@ public class Constant {
     public static final String PREFKEY_QDATE = "prefkey_query_date";
     public static final String PREFKEY_NAME = "com.androidyug.marsrover.sharedpref";
 
+    public static final String PREFKEY_FIRST_TIME = "first_time";
+
 }

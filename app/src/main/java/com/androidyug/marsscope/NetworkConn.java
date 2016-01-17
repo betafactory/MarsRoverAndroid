@@ -36,7 +36,9 @@ public class NetworkConn extends BroadcastReceiver {
             mSnackbar = Snackbar.make(mView, "INTERNET CONNECTION LOST", Snackbar.LENGTH_INDEFINITE);
             mSnackbar.show();
         } else {
-            mSnackbar.dismiss();
+
+            if (mSnackbar!=null)
+                mSnackbar.dismiss();
         }
     }
 

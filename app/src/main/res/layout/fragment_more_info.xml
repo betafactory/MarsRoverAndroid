@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:visibility="visible"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        tools:text="@string/app_desc"
+        />
+
+    <Button
+        android:id="@+id/btn_enter"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="ENTER"
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corners"
+        />
+
+</FrameLayout>

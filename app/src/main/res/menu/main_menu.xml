@@ -2,14 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_fav"
-        android:icon="@drawable/ic_action_heart"
-        android:title="Fav" />
-
     <item android:id="@+id/action_about"
-        android:title="Intro About Developer"
+        android:icon="@drawable/ic_action_heart"
+        android:title="About" />
+
+    <item android:id="@+id/action_about_dev"
+        android:title="About Developer"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/action_rate_us"
+        android:title="Rate Us"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_opensource"
+        android:title="Opensource License"
+        app:showAsAction="never"/>
 
 
 </menu>

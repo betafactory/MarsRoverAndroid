@@ -1,41 +1,31 @@
 package com.androidyug.marsscope.ui.main;
 
 import android.app.*;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.SharedPreferencesCompat;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,13 +42,10 @@ import com.androidyug.marsscope.ui.selectrover.SelectRoverActivity;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import com.squareup.otto.ThreadEnforcer;
-import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.prefs.Preferences;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -73,6 +60,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public static final String INTENT_ROVER_ID = "intent_rover_id";
     public static final String INTENT_ROVER_DEFAULT_DATE = "rover_landing_date";
 
+    Bus bus;
+    NetworkConn mNetworkConn;
+    // requird by date picker
+    Date mLandingDate = Utils.stringToDate(Constant.CURIOSITY_LANDING_DATE);
+    Date mMaxDate;
+    String  mQueryDate = Constant.CURIOSITY_LANDING_DATE;
+    MarsDataSourceImple marsDataSourceImple;
+    LinearLayoutManager llm;
+    PhotoAdapter mPhotoAdapter;
+    List<Photo> mDataList;
+    
+    int mRoverId = Constant.ROVER_CURIOUSITY;
+    int mPage = 1;
+    boolean mMorePage = false;
+    private boolean mLoading = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
+
+
     @Bind(R.id.ll_root_home_fragment)
     LinearLayout llRoot;
 
@@ -85,38 +90,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.btn_date)
     Button btnDate;
 
-    @Bind(R.id.ib_menu)
-    ImageButton ibMenu;
-
     @Bind(R.id.tv_title)
     TextView tvTitle;
 
     @Bind(R.id.progress_bar)
     ProgressBar progressBar;
 
-
-    ProgressDialog mProgressDialog;
-
-    Bus bus;
-    NetworkConn mNetworkConn;
-
-//    requird by date picker
-    Date mLandingDate = Utils.stringToDate(Constant.CURIOSITY_LANDING_DATE);
-    Date mMaxDate;
-
-    String  mQueryDate = Constant.CURIOSITY_LANDING_DATE;
-
-    MarsDataSourceImple marsDataSourceImple;
-    LinearLayoutManager llm;
-    PhotoAdapter mPhotoAdapter;
-    List<Photo> mDataList;
-    
-    int mRoverId = Constant.ROVER_CURIOUSITY;
-
-    int mPage = 1;
-    boolean mMorePage = false;
-    private boolean mLoading = true;
-    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
 
     @Override
@@ -126,8 +105,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         bus = new Bus(ThreadEnforcer.ANY);
         llm = new LinearLayoutManager(getActivity());
 
-
-
+        setHasOptionsMenu(true);
 //        getActivity().
 //        toolbar.setNavigationIcon();
 //        toolbar.setNavigationContentDescription();
@@ -135,100 +113,34 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //        toolbar.setLogoDescription();
 //        toolbar.setNavigationOnClickListener();
 //        toolbar.setTitle(null);
-//        //toolbar.inflateMenu(R.menu.main_menu);
-//
-//        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                int id = item.getItemId();
-//
-//                switch (id) {
-//                    case R.id.action_fav:
-//                        Toast.makeText(getActivity(), "fav clicked", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.action_about:
-//                        Toast.makeText(getActivity(), "fav clicked", Toast.LENGTH_SHORT).show();
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
 
     }
 
 
-    private void showToolbar() {
-
-        toolbar.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-                R.anim.translate_up_off));
-    }
-
-    private void hideToolbar() {
-
-        toolbar.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-                R.anim.translate_up_on));
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        bus.register(this);
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        bus.unregister(this);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        saveToSharedPref(mRoverId, mQueryDate);
-        getActivity().unregisterReceiver(mNetworkConn);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mNetworkConn = new NetworkConn(llRoot);
-        getActivity().registerReceiver(mNetworkConn,
-                new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, v);
 
+        initializeActionToolbar();
 
         btnDate.setOnClickListener(this);
-        ibMenu.setOnClickListener(this);
-
         tvTitle.setText("CURIOSITY");
         marsDataSourceImple = new MarsDataSourceImple(getContext(),bus);
-
-        // search the sharepreference and make query accordingly
         SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
         mQueryDate = pref.getString(Constant.PREFKEY_QDATE, Constant.CURIOSITY_LANDING_DATE);
         mRoverId = pref.getInt(Constant.PREFKEY_ROVER_ID, Constant.ROVER_CURIOUSITY);
         Log.d(LOG_TAG, "from on start" + mQueryDate + mRoverId);
         queryApi(mRoverId, mQueryDate, mPage);
-
         setTitle(mRoverId);
         btnDate.setText(mQueryDate);
-
-
 
         rvHome.setOnScrollListener(new RecyclerView.OnScrollListener() {
 
             boolean flag;
-
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -278,7 +190,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                         })
                                         .setActionTextColor(Color.CYAN);
 
-
                                 View snackbarView = snackbar.getView();
                                 snackbarView.setBackgroundColor(Color.DKGRAY);
                                 TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
@@ -299,53 +210,98 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    void initilizeRecyclerView(List<Photo> dataset){
+    private void showToolbar() {
 
+        toolbar.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+                R.anim.translate_up_off));
+    }
+
+    private void hideToolbar() {
+
+        toolbar.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+                R.anim.translate_up_on));
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        bus.register(this);
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        bus.unregister(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        saveToSharedPref(mRoverId, mQueryDate);
+        getActivity().unregisterReceiver(mNetworkConn);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mNetworkConn = new NetworkConn(llRoot);
+        getActivity().registerReceiver(mNetworkConn,
+                new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+
+
+    void initilizeRecyclerView(List<Photo> dataset){
         mPhotoAdapter = new PhotoAdapter(getActivity(), dataset);
         rvHome.setLayoutManager(llm);
         rvHome.addItemDecoration(new VerticalSpace(20));
         rvHome.setAdapter(mPhotoAdapter);
     }
 
+    void initializeActionToolbar(){
+        toolbar.setTitle("");
+        HomeActivity homeActivity = ((HomeActivity) getActivity());
+        homeActivity.setSupportActionBar(toolbar);
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_action_overflow));
+        toolbar.setNavigationIcon(R.drawable.ic_view_headline);
+        toolbar.setPopupTheme(android.R.style.Widget_Material_Light_PopupWindow);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), SelectRoverActivity.class);
+                startActivityForResult(i, SELECT_ROVER_RQST_CODE);
+            }
+        });
+        homeActivity.getSupportActionBar().setTitle("");
+        homeActivity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_menu);
+
+    }
 
     @Subscribe
-    public void onRespponse(Dataset dataset){
-
+    public void onResponse(Dataset dataset){
         progressBar.setVisibility(View.GONE);
         btnDate.setVisibility(View.VISIBLE);
-
         List<Photo> photos = dataset.getPhotos();
         Log.d("HomeFragment", "" + photos.size());
 
-
-
         if (mDataList == null){ // mPhotoAdapter == null
-
             mDataList = photos;
             initilizeRecyclerView(mDataList);
-
             if (photos.size()>0) {
-
                 Rover rover = photos.get(0).getRover();
                 mMaxDate = Utils.stringToDate(rover.getMaxDate());
             }
-
             Log.d(LOG_TAG, "mLandingDate " + mLandingDate);
             Log.d(LOG_TAG, "mMaxDate " + mMaxDate);
-
-
             if (photos.size()==25) {
                 mPage++;
                 mMorePage = true;
             }
-
-
-//            mPhotoAdapter = new PhotoAdapter(getActivity(), mDataList);
-//            rvHome.setLayoutManager(llm);
-//            rvHome.addItemDecoration(new VerticalSpace(20));
-//            rvHome.setAdapter(mPhotoAdapter);
-           // mPhotoAdapter.notifyDataSetChanged();
-
 
         } else { // if mDatalist !=null append photo into this
 
@@ -381,13 +337,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
         int id = v.getId();
-        switch (id){
-            case R.id.ib_menu:
-                Intent i = new Intent(getActivity(), SelectRoverActivity.class);
-                startActivityForResult(i,SELECT_ROVER_RQST_CODE );
-                break;
-            case R.id.btn_date:
 
+        switch (id){
+            case R.id.btn_date:
                 final Calendar c = Calendar.getInstance(); // default time to show in dialog datepicker
                 c.setTime(Utils.stringToDate(mQueryDate));
                 int year = c.get(Calendar.YEAR);
@@ -454,8 +406,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             mPage = 1;
             mMorePage = false;
 
-            mDataList.clear();
-            mPhotoAdapter.notifyDataSetChanged();
+            if (mDataList!=null)  // chances is mDataList is not initilize from on response and you select different rover causing null pointer exception
+                mDataList.clear();
+
+            if (mPhotoAdapter!=null)
+                mPhotoAdapter.notifyDataSetChanged();
 
             btnDate.setVisibility(View.GONE);
             btnDate.setText(mQueryDate);
@@ -476,15 +431,37 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-
-
     void queryApi(int roverId, String qdate, int page){
-
         progressBar.setVisibility(View.VISIBLE);
         marsDataSourceImple.makeCallToService(roverId, page, qdate);
     }
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main_menu, menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.action_about:
+                Toast.makeText(getActivity(), "about", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_about_dev:
+                Toast.makeText(getActivity(), "about_dev", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_opensource:
+                Toast.makeText(getActivity(), "opensource", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_rate_us:
+                Toast.makeText(getActivity(), "rateus", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return true;
+    }
 
 }
