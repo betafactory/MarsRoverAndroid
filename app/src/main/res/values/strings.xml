@@ -17,6 +17,18 @@
     </string>
 
     <!-- App Description-->
-    <string name="app_desc">Spirit, also known as MER-A (Mars Exploration Rover A) or MER-2, is a robotic rover on Mars, active from 2004 to 2010. Spirit became stuck in soft soil.</string>
+    <string name="app_desc">
+        This app is using nasa api (api.nasa.gov) to display photos taken by 3 rover sent on planet Mars.
+        These rover sent fresh phts every day taken by their various camera installed.
+    </string>
 
+    <string name="info_more">
+        This is not an official app, though i hope to be. If you are from Nasa/Isro i love to hear from you.
+    </string>
+
+    <string name="about_developer">
+        Built on planet <b>Earth</b> by a human - Nitin Anand(<i>nitinnatural@gmail.com</i>) with love.
+    </string>
+
+    <string name="btn_enter">Enter</string>
 </resources>

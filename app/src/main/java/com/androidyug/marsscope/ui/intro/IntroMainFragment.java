@@ -44,7 +44,7 @@ public class IntroMainFragment extends Fragment {
                 new int[]{204, 204, 204, 204},
                 new int[]{0, 0, 0, 0});
 
-        int traceColor = Color.argb(255, 0, 0, 0);
+        int traceColor = Color.argb(255, 255, 255, 255); // default 255, 0 ,0 ,0
         int[] traceColors = new int[4]; // 4 glyphs
         int residueColor = Color.argb(50, 0, 0, 0);
         int[] residueColors = new int[4]; // 4 glyphs

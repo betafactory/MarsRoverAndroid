@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.androidyug.marsscope.ui.intro.IntroActivity">
+
+    <SurfaceView
+        android:id="@+id/sv_starfield"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.androidyug.marsscope.ui.intro.VerticalViewPager
         android:id="@+id/vp_intro"
+        android:background="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </com.androidyug.marsscope.ui.intro.VerticalViewPager>
 
-</RelativeLayout>
+</FrameLayout>

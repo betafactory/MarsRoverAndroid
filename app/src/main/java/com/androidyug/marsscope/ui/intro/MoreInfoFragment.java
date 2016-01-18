@@ -63,11 +63,11 @@ public class MoreInfoFragment extends Fragment {
                 break;
             case 2:
                 //more info two
-                tvInfo.setText(getResources().getText(R.string.spirit_desc));
+                tvInfo.setText(getResources().getText(R.string.info_more));
                 break;
             case 3:
                 // about developer
-                tvInfo.setText(Html.fromHtml(getResources().getText(R.string.opportunity_desc).toString()));
+                tvInfo.setText(Html.fromHtml("Built on planet <b>Earth</b> by a human - Nitin Anand(<i>nitinnatural@gmail.com</i>) with love."));
                 break;
             case 4:
                 // enter button
