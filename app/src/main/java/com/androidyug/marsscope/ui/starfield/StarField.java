@@ -20,6 +20,8 @@ public class StarField {
     private int mDirection = Stars.RIGHT;
     private float mAmmount = AMMOUNT_NORMAL;
 
+    Canvas c;
+
     private Stars[] stars;
 
     private static final int TILES_NORMAL = 1;
@@ -31,6 +33,7 @@ public class StarField {
     private static final float AMMOUNT_LOTS = 0.2f;
 
     private Runnable mDraw = new Runnable() {
+        Boolean flag = mVisible;
         @Override
         public void run() {
             drawFrame();
@@ -55,7 +58,11 @@ public class StarField {
         mPaintStar.setAntiAlias(true);
     }
 
+    private boolean firstTime = true;
+
     public void start() {
+        firstTime = true;
+        mVisible = true;
         drawFrame();
     }
 
@@ -69,10 +76,10 @@ public class StarField {
         mOffsetSpan = mWidth * (mTiles - 1);
     }
 
-    private boolean firstTime = true;
+
 
     private void drawFrame() {
-        Canvas c = null;
+
         if (firstTime) {
             firstTime = false;
             updateXWidthAndOffsetSpan();

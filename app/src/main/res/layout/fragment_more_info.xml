@@ -19,9 +19,11 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:text="ENTER"
+        android:text="XPLORE"
         tools:visibility="visible"
         android:visibility="gone"
+        android:background="@android:color/transparent"
+        android:typeface="sans"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         />

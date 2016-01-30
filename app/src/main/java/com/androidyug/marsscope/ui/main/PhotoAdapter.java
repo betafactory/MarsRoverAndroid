@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
- * Created by IAMONE on 12/26/2015.
+ * @author Nitin Anand (nitinnatural@gmail.com)
  */
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>{
 

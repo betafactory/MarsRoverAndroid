@@ -38,6 +38,7 @@ import com.androidyug.marsscope.data.model.Dataset;
 import com.androidyug.marsscope.data.model.Photo;
 import com.androidyug.marsscope.data.model.Rover;
 import com.androidyug.marsscope.data.rest.MarsDataSourceImple;
+import com.androidyug.marsscope.ui.intro.IntroActivity;
 import com.androidyug.marsscope.ui.selectrover.SelectRoverActivity;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -51,7 +52,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by IAMONE on 12/26/2015.
+ * @author Nitin Anand (nitinnatural@gmail.com)
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
@@ -347,15 +348,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
 
-                                    // passed 2 for old device like datepicker on lollipop
-                DatePickerDialog dialog = new DatePickerDialog(getActivity(),2, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // passed 2 for old device like datepicker on lollipop
+                        DatePickerDialog dialog = new DatePickerDialog(getActivity(),2, new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        mDataList.clear();
-                        mPhotoAdapter.notifyDataSetChanged();
-                        mPage = 1;
-                        mMorePage = false;
+                                mDataList.clear();
+                                mPhotoAdapter.notifyDataSetChanged();
+                                mPage = 1;
+                                mMorePage = false;
 
                         // TODO: 1/5/2016 refactor code a/t below two line code
 //                        mDataList.clear();
@@ -448,7 +449,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         int id = item.getItemId();
         switch (id){
             case R.id.action_about:
-                Toast.makeText(getActivity(), "about", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), IntroActivity.class));
                 break;
             case R.id.action_about_dev:
                 Toast.makeText(getActivity(), "about_dev", Toast.LENGTH_SHORT).show();

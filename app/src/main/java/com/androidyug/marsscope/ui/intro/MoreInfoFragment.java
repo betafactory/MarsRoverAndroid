@@ -1,6 +1,10 @@
 package com.androidyug.marsscope.ui.intro;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -11,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.androidyug.marsscope.R;
+import com.androidyug.marsscope.common.Constant;
+import com.androidyug.marsscope.ui.main.HomeActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -67,7 +73,9 @@ public class MoreInfoFragment extends Fragment {
                 break;
             case 3:
                 // about developer
-                tvInfo.setText(Html.fromHtml("Built on planet <b>Earth</b> by a human - Nitin Anand(<i>nitinnatural@gmail.com</i>) with love."));
+                tvInfo.setText(Html.fromHtml("Built on planet <b>Earth</b> by a human - <b>Nitin Anand(<i>nitinnatural@gmail.com</i>)</b>"));
+                tvInfo.setTextSize(16);
+                tvInfo.animate().alpha(12).start();
                 break;
             case 4:
                 // enter button
@@ -76,6 +84,14 @@ public class MoreInfoFragment extends Fragment {
                 btnEnter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                        SharedPreferences.Editor edit = sharedPref.edit();
+                        edit.putBoolean(Constant.PREFKEY_FIRST_TIME, false);
+                        edit.commit();
+                        Intent i = new Intent(getActivity(), HomeActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(i);
+                        getActivity().overridePendingTransition(android.R.anim.fade_in, R.anim.zoom_in_exit);
                         getActivity().finish();
                     }
                 });

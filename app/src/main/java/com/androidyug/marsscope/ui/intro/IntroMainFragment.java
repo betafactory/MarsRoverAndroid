@@ -35,16 +35,16 @@ public class IntroMainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_intro_main, container, false);
         ButterKnife.bind(this, v);
 
-        mAnimatedSvgView.setGlyphStrings(AndroidLogoPaths.ANDROID_GLYPHS);
+        mAnimatedSvgView.setGlyphStrings(AndroidLogoPaths.ANDROID_GLYPHS_2);
 
         // ARGB values for each glyph
         mAnimatedSvgView.setFillPaints(
-                new int[]{255, 255, 255, 255},
-                new int[]{153, 153, 153, 153},
-                new int[]{204, 204, 204, 204},
-                new int[]{0, 0, 0, 0});
+                new int[]{120, 120, 120, 120},
+                new int[]{0, 0, 0, 0},
+                new int[]{173, 173, 173, 173},
+                new int[]{239, 239, 239, 239});
 
-        int traceColor = Color.argb(255, 255, 255, 255); // default 255, 0 ,0 ,0
+        int traceColor = Color.argb(255, 255, 255, 255); // default 255, 0 ,0 ,0 white
         int[] traceColors = new int[4]; // 4 glyphs
         int residueColor = Color.argb(50, 0, 0, 0);
         int[] residueColors = new int[4]; // 4 glyphs

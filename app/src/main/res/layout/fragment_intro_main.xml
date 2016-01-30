@@ -9,13 +9,13 @@
     <oak.svg.AnimatedSvgView
         android:layout_gravity="center"
         android:id="@+id/animated_svg_view"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_marginTop="100dp"
         android:layout_height="wrap_content"
-        oak:oakSvgImageSizeX="1600"
-        oak:oakSvgImageSizeY="1600"
+        oak:oakSvgImageSizeX="1024"
+        oak:oakSvgImageSizeY="1024"
         oak:oakSvgTraceTime="2000"
-        oak:oakSvgTraceTimePerGlyph="1000"
+        oak:oakSvgTraceTimePerGlyph="2000"
         oak:oakSvgFillStart="1200"
         oak:oakSvgFillTime="2000"/>
 
@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:text="SCROLL DOWN"
         android:textColor="@android:color/white"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:layout_marginTop="40dp"
         />
 

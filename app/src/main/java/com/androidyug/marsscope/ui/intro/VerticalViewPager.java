@@ -1,8 +1,5 @@
 package com.androidyug.marsscope.ui.intro;
 
-/**
- * Created by IAMONE on 1/16/2016.
- */
 
 import android.content.Context;
         import android.content.res.Resources;
