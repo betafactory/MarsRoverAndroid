@@ -1,11 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'android_store_key'
+            keyPassword 'Xn1t1n_07'
+            storeFile file('C:/Users/IAMONE/Desktop/keystore_path/android_store_key.jks')
+            storePassword 'Xn1t1n_07'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
-        applicationId "com.androidyug.marsscope"
+        applicationId "com.androidyug.marsrover"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
@@ -15,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -39,5 +47,4 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.easing:library:1.0.1@aar'
     compile 'com.daimajia.androidanimations:library:1.1.3@aar'
-
 }

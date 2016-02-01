@@ -1,4 +1,4 @@
-package com.androidyug.marsscope;
+package com.androidyug.marsrover;
 
 import org.junit.Test;
 

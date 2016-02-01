@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_action_heart"
         android:title="About" />
 
-    <item android:id="@+id/action_about_dev"
+  <!--  <item android:id="@+id/action_about_dev"
         android:title="About Developer"
         app:showAsAction="never"/>
 
@@ -17,6 +17,6 @@
     <item android:id="@+id/action_opensource"
         android:title="Opensource License"
         app:showAsAction="never"/>
-
+-->
 
 </menu>

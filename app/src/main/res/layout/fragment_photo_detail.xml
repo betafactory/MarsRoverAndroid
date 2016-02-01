@@ -10,11 +10,11 @@
         layout="@layout/toolbar_detail"/>
 
 
-    <com.androidyug.marsscope.ui.detail.ScaleImageView
+    <com.androidyug.marsrover.ui.detail.ScaleImageView
         android:id="@+id/iv_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/black"
+        android:background="@android:color/white"
         tools:src="@drawable/rover_opportunity"
         />
 

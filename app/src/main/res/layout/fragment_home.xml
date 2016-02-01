@@ -21,7 +21,7 @@
             android:layout_marginRight="10dp"
             />-->
 
-        <com.androidyug.marsscope.ui.main.AutofitRecyclerView
+        <com.androidyug.marsrover.ui.main.AutofitRecyclerView
             android:id="@+id/rv_home"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
