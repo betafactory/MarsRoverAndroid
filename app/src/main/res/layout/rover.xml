@@ -18,13 +18,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
             android:orientation="vertical"
+            android:layout_marginTop="20dp"
             >
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 app:civ_border_width="2dp"
@@ -35,12 +34,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
+                android:padding="4dp"
                 android:text="CURIOSITY"
                 android:textColor="@android:color/white"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 android:layout_gravity="center"
                 />
 
@@ -49,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="false"
+                android:padding="4dp"
                 android:textSize="14sp"
                 android:textColor="@android:color/white"
                 android:text="@string/curisosity_desc"
@@ -145,7 +143,7 @@
 
 
     <FrameLayout
-        tools:visibility="visible"
+        tools:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fl_spirit"
@@ -154,13 +152,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
             android:orientation="vertical"
+            android:layout_marginTop="20dp"
             >
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 app:civ_border_width="2dp"
@@ -171,11 +168,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
+                android:padding="4dp"
                 android:text="SPIRIT"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 android:textColor="@android:color/white"
                 android:layout_gravity="center"
                 />
@@ -185,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="false"
+                android:padding="4dp"
                 android:textSize="14sp"
                 android:textColor="@android:color/white"
                 android:text="@string/spirit_desc"
@@ -281,125 +277,128 @@
 
 
     <FrameLayout
-
-        tools:visibility="gone"
+        tools:visibility="visible"
         android:id="@+id/fl_opportunity"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:orientation="vertical"
-            >
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@android:color/white"
-                android:src="@drawable/rover_opportunity"
-                />
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
-                android:text="OPPORTUNITY"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:layout_gravity="center"
-                />
-
-            <TextView
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
-                android:text="@string/opportunity_desc"
-                />
-
-            <RelativeLayout
-                android:layout_width="300dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Landing Date: 25 Jan, 2004"
-                    android:padding="4dp"
-                    android:background="@drawable/tag_green"
-                    android:textColor="@android:color/white"
-                    android:id="@+id/tv_text_oppor_landing_date" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Status: Active"
-                    android:id="@+id/tv_text_oppor_status"
-                    android:layout_marginLeft="4dp"
-                    android:padding="4dp"
-                    android:background="@drawable/tag_green"
-                    android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/tv_text_oppor_landing_date"
-                    android:layout_toEndOf="@+id/tv_text_oppor_landing_date" />
-
-                <TextView
-                    android:id="@+id/tv_text_oppor_weight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Weight: 185kg"
-                    android:layout_alignParentLeft="true"
-                    android:padding="4dp"
-                    android:background="@drawable/tag_green"
-                    android:layout_below="@id/tv_text_oppor_landing_date"
-                    android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@android:color/white"
+                    android:src="@drawable/rover_opportunity"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_text_oppor_dimenson"
-                    android:layout_marginLeft="4dp"
                     android:layout_marginTop="4dp"
                     android:padding="4dp"
-                    android:background="@drawable/tag_green"
-                    android:text="Dimen: 2.3m * 1.6m * 1.5 m"
+                    android:text="OPPORTUNITY"
+                    android:textSize="20sp"
                     android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/tv_text_oppor_weight"
-                    android:layout_toEndOf="@+id/tv_text_oppor_weight"
-                    android:layout_below="@id/tv_text_oppor_status"
+                    android:layout_gravity="center"
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_total_oppor_cam"
-                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
                     android:padding="4dp"
-                    android:background="@drawable/tag_green"
-                    android:text="Distance Covered: 42.45km (as of 21 Aug 2015)"
+                    android:textSize="14sp"
                     android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/tv_text_oppor_weight"
-                    android:layout_toEndOf="@+id/tv_text_oppor_weight"
-                    android:layout_below="@id/tv_text_oppor_weight"
-                    android:layout_alignParentLeft="true"
+                    android:text="@string/opportunity_desc"
                     />
 
-            </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Landing Date: 25 Jan, 2004"
+                        android:padding="4dp"
+                        android:background="@drawable/tag_green"
+                        android:textColor="@android:color/white"
+                        android:id="@+id/tv_text_oppor_landing_date" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status: Active"
+                        android:id="@+id/tv_text_oppor_status"
+                        android:layout_marginLeft="4dp"
+                        android:padding="4dp"
+                        android:background="@drawable/tag_green"
+                        android:textColor="@android:color/white"
+                        android:layout_toRightOf="@+id/tv_text_oppor_landing_date"
+                        android:layout_toEndOf="@+id/tv_text_oppor_landing_date" />
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_text_oppor_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Weight: 185kg"
+                        android:layout_alignParentLeft="true"
+                        android:padding="4dp"
+                        android:background="@drawable/tag_green"
+                        android:layout_below="@id/tv_text_oppor_landing_date"
+                        android:textColor="@android:color/white"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_text_oppor_dimenson"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
+                        android:background="@drawable/tag_green"
+                        android:text="Dimen: 2.3m * 1.6m * 1.5 m"
+                        android:textColor="@android:color/white"
+                        android:layout_toRightOf="@+id/tv_text_oppor_weight"
+                        android:layout_toEndOf="@+id/tv_text_oppor_weight"
+                        android:layout_below="@id/tv_text_oppor_status"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_total_oppor_cam"
+                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
+                        android:background="@drawable/tag_green"
+                        android:text="Distance Covered: 42.45km (as of 21 Aug 2015)"
+                        android:textColor="@android:color/white"
+                        android:layout_toRightOf="@+id/tv_text_oppor_weight"
+                        android:layout_toEndOf="@+id/tv_text_oppor_weight"
+                        android:layout_below="@id/tv_text_oppor_weight"
+                        android:layout_alignParentLeft="true"
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
         <Button
             android:id="@+id/btn_see_photo_opportunity"
             android:layout_width="150dp"

@@ -16,7 +16,10 @@ import android.widget.TextView;
 
 import com.androidyug.marsscope.R;
 import com.androidyug.marsscope.common.Constant;
+import com.androidyug.marsscope.common.FontsFactory;
 import com.androidyug.marsscope.ui.main.HomeActivity;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -61,6 +64,7 @@ public class MoreInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_more_info, container, false);
         ButterKnife.bind(this, v);
+        tvInfo.setTypeface(FontsFactory.robotoRegular(getActivity()));
 
         switch (pagePos) {
             case 1:
@@ -73,13 +77,12 @@ public class MoreInfoFragment extends Fragment {
                 break;
             case 3:
                 // about developer
-                tvInfo.setText(Html.fromHtml("Built on planet <b>Earth</b> by a human - <b>Nitin Anand(<i>nitinnatural@gmail.com</i>)</b>"));
-                tvInfo.setTextSize(16);
-                tvInfo.animate().alpha(12).start();
+                tvInfo.setText(Html.fromHtml("Built on planet Earth by a Human Being, </br>Nitin Anand nitinnatural@gmail.com, (+91) 8929754594"));
                 break;
             case 4:
                 // enter button
                 tvInfo.setVisibility(View.GONE);
+                btnEnter.setTypeface(FontsFactory.robotoBold(getActivity()));
                 btnEnter.setVisibility(View.VISIBLE);
                 btnEnter.setOnClickListener(new View.OnClickListener() {
                     @Override

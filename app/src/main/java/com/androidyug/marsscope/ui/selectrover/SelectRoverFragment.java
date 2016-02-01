@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.androidyug.marsscope.R;
 import com.androidyug.marsscope.common.Constant;
@@ -29,6 +30,9 @@ public class SelectRoverFragment extends Fragment {
     @Bind(R.id.lpi)
     LinePageIndicator lpi;
 
+    @Bind(R.id.iv_back)
+    ImageView ivBack;
+
 
 
     @Override
@@ -42,6 +46,13 @@ public class SelectRoverFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_select_rover, container, false);
         ButterKnife.bind(this, v);
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
 
 
         vpSelectRover.setAdapter(new RoverPagerAdapter(getActivity().getSupportFragmentManager()));

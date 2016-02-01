@@ -44,9 +44,9 @@ public class IntroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        requestWindowFeature();
+        requestWindowFeature();
         super.onCreate(savedInstanceState);
-        setWindowAttributes();
+//        setWindowAttributes();
         setWindowSizes();
         setContentView(R.layout.activity_intro);
         ButterKnife.bind(this);

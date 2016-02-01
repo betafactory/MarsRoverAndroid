@@ -268,7 +268,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         HomeActivity homeActivity = ((HomeActivity) getActivity());
         homeActivity.setSupportActionBar(toolbar);
         toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_action_overflow));
-        toolbar.setNavigationIcon(R.drawable.ic_view_headline);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_main);
         toolbar.setPopupTheme(android.R.style.Widget_Material_Light_PopupWindow);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

@@ -7,9 +7,12 @@
     <TextView
         android:id="@+id/tv_info"
         android:visibility="visible"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
         android:layout_gravity="center"
+        android:layout_marginRight="15dp"
+        android:textSize="16sp"
         android:textColor="@android:color/white"
         tools:text="@string/app_desc"
         />
@@ -19,13 +22,12 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:text="XPLORE"
+        android:text="EXPLORE"
         tools:visibility="visible"
         android:visibility="gone"
         android:background="@android:color/transparent"
-        android:typeface="sans"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="30sp"
         />
 
 </FrameLayout>

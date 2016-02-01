@@ -18,16 +18,16 @@
 
     <!-- App Description-->
     <string name="app_desc">
-        This app is using nasa api (api.nasa.gov) to display photos taken by 3 rover sent on planet Mars.
-        These rover sent fresh phts every day taken by their various camera installed.
+        Explore the landscape of planet Mars closely with MarsRover. This app is consuming nasa api (api.nasa.gov) to display photos taken by rover(Curiosity, Opportunity, Spirit) operating on planet Mars.
+        These rovers send fresh photos everyday taken by multiple cameras installed.
     </string>
 
     <string name="info_more">
-        This is not an official app, though i hope to be. If you are from Nasa/Isro i love to hear from you.
+        This is not an official App, just developed it for learning purpose. If you are from NASA/ISRO or anybody who are curious about, I love to hear from you.
     </string>
 
     <string name="about_developer">
-        Built on planet <b>Earth</b> by a human - Nitin Anand(<i>nitinnatural@gmail.com</i>) with love.
+        Built on planet Earth by a Human Being, Nitin Anand(<p>nitinnatural@gmail.com, +91 8929754594</p>) with love.
     </string>
 
     <string name="btn_enter">Enter</string>
