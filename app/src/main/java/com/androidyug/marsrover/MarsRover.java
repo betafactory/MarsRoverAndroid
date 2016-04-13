@@ -3,7 +3,7 @@ package com.androidyug.marsrover;
 import android.app.Application;
 
 /**
- * Created by IAMONE on 12/22/2015.
+ * @author nitinnatural@gmail.com Niitn Anand
  */
 public class MarsRover extends Application{
 
