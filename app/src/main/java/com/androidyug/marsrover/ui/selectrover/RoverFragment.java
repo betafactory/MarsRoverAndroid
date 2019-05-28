@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import butterknife.BindView;
 import com.androidyug.marsrover.R;
 import com.androidyug.marsrover.common.Constant;
 import com.androidyug.marsrover.ui.main.HomeFragment;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -24,22 +24,22 @@ import butterknife.ButterKnife;
 public class RoverFragment extends Fragment implements View.OnClickListener {
     public static final String ROVER_ARGS = "rover_args";
 
-    @Bind(R.id.fl_curiosity)
+    @BindView(R.id.fl_curiosity)
     FrameLayout flCuriosity;
 
-    @Bind(R.id.fl_opportunity)
+    @BindView(R.id.fl_opportunity)
     FrameLayout flOpportunity;
 
-    @Bind(R.id.fl_spirit)
+    @BindView(R.id.fl_spirit)
     FrameLayout flSpirit;
 
-    @Bind(R.id.btn_see_photo_curiosity)
+    @BindView(R.id.btn_see_photo_curiosity)
     Button btnCurosity;
 
-    @Bind(R.id.btn_see_photo_opportunity)
+    @BindView(R.id.btn_see_photo_opportunity)
     Button btnOpportunity;
 
-    @Bind(R.id.btn_see_photo_spirit)
+    @BindView(R.id.btn_see_photo_spirit)
     Button btnSpirit;
 
     public RoverFragment(){

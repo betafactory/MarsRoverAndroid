@@ -1,16 +1,15 @@
 apply plugin: 'com.android.library'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'android_store_key'
-            keyPassword 'Xn1t1n_07'
-            storeFile file('C:/Users/IAMONE/Desktop/keystore_path/android_store_key.jks')
-            storePassword 'Xn1t1n_07'
-        }
-    }
+//    signingConfigs {
+//        config {
+//            keyAlias 'android_store_key'
+//            keyPassword 'Xn1t1n_07'
+//            storeFile file('C:/Users/IAMONE/Desktop/keystore_path/android_store_key.jks')
+//            storePassword 'Xn1t1n_07'
+//        }
+//    }
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
@@ -20,9 +19,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
-        debug {
-            signingConfig signingConfigs.config
-        }
+//        debug {
+//            signingConfig signingConfigs.config
+//        }
     }
 }
 

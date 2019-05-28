@@ -13,12 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import com.androidyug.marsrover.R;
 import com.androidyug.marsrover.common.Constant;
 import com.androidyug.marsrover.common.FontsFactory;
 import com.androidyug.marsrover.ui.main.HomeActivity;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -50,10 +50,10 @@ public class MoreInfoFragment extends Fragment {
         }
     }
 
-    @Bind(R.id.tv_info)
+    @BindView(R.id.tv_info)
     TextView tvInfo;
 
-    @Bind(R.id.btn_enter)
+    @BindView(R.id.btn_enter)
     Button btnEnter;
 
     @Nullable

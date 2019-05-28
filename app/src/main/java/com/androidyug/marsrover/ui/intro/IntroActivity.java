@@ -15,10 +15,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import butterknife.BindView;
 import com.androidyug.marsrover.R;
 import com.androidyug.marsrover.ui.starfield.StarField;
-
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
@@ -33,13 +32,13 @@ public class IntroActivity extends AppCompatActivity {
     int height;
     boolean fromOnCreate = false;
 
-    @Bind(R.id.vp_intro)
+    @BindView(R.id.vp_intro)
     VerticalViewPager vpIntro;
 
-    @Bind(R.id.sv_starfield)
+    @BindView(R.id.sv_starfield)
     SurfaceView svStarfield;
 
-//    @Bind(R.id.iv_bg)
+//    @BindView(R.id.iv_bg)
 //    ImageView ivBg;
 
     @Override

@@ -11,12 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import com.androidyug.marsrover.R;
 import com.androidyug.marsrover.common.FontsFactory;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import oak.svg.AnimatedSvgView;
 
@@ -30,13 +30,13 @@ public class IntroMainFragment extends Fragment {
 
     private Context mContext;
 
-    @Bind(R.id.animated_svg_view)
+    @BindView(R.id.animated_svg_view)
     AnimatedSvgView mAnimatedSvgView;
 
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tvTitle;
 
-    @Bind(R.id.tv_scroll_down)
+    @BindView(R.id.tv_scroll_down)
     TextView tvScrollDown;
 
     @Override

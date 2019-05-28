@@ -20,6 +20,7 @@ import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.widget.Toast;
 
+import butterknife.BindView;
 import com.androidyug.marsrover.R;
 import com.androidyug.marsrover.data.model.Photo;
 import com.squareup.picasso.Picasso;
@@ -30,7 +31,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -61,19 +61,19 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
     PointF mid = new PointF();
     float oldDist = 1f;
 
-    @Bind(R.id.iv_detail)
+    @BindView(R.id.iv_detail)
     ImageView ivDetail;
 
-    @Bind(R.id.toolbar_detail)
+    @BindView(R.id.toolbar_detail)
     Toolbar mToolbarDetail;
 
-    @Bind(R.id.ib_save)
+    @BindView(R.id.ib_save)
     ImageButton ibSave;
 
-    @Bind(R.id.ib_share)
+    @BindView(R.id.ib_share)
     ImageButton ibShare;
 
-    @Bind(R.id.ib_back)
+    @BindView(R.id.ib_back)
     ImageButton ibBack;
 
     Photo mPhoto;

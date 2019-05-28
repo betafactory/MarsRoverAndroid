@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import com.androidyug.marsrover.R;
 import com.androidyug.marsrover.common.Constant;
 import com.androidyug.marsrover.common.FontsFactory;
 import com.viewpagerindicator.LinePageIndicator;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -26,16 +26,16 @@ import butterknife.ButterKnife;
 public class SelectRoverFragment extends Fragment {
 
 
-    @Bind(R.id.vp_select_rover)
+    @BindView(R.id.vp_select_rover)
     ViewPager vpSelectRover;
 
-    @Bind(R.id.lpi)
+    @BindView(R.id.lpi)
     LinePageIndicator lpi;
 
-    @Bind(R.id.iv_back)
+    @BindView(R.id.iv_back)
     ImageView ivBack;
 
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tvTitle;
 
 

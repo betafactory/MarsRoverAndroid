@@ -29,6 +29,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
 import com.androidyug.marsrover.NetworkConn;
 import com.androidyug.marsrover.R;
 import com.androidyug.marsrover.common.Constant;
@@ -49,7 +50,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -80,22 +80,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     int pastVisiblesItems, visibleItemCount, totalItemCount;
 
 
-    @Bind(R.id.ll_root_home_fragment)
+    @BindView(R.id.ll_root_home_fragment)
     LinearLayout llRoot;
 
-    @Bind(R.id.rv_home)
+    @BindView(R.id.rv_home)
     RecyclerView rvHome;
 
-    @Bind(R.id.main_toolbar)
+    @BindView(R.id.main_toolbar)
     Toolbar toolbar;
 
-    @Bind(R.id.btn_date)
+    @BindView(R.id.btn_date)
     Button btnDate;
 
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tvTitle;
 
-    @Bind(R.id.progress_bar)
+    @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
 
