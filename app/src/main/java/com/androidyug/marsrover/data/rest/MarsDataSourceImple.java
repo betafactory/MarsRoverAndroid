@@ -32,14 +32,13 @@ public class MarsDataSourceImple implements MarsDataSource {
     Context mContext;
 
 
-    public MarsDataSourceImple(Context ctx, Bus bus){
+    public MarsDataSourceImple(Context ctx, Bus bus) {
 
         this.mContext = ctx;
         this.bus = bus;
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create();
-
 
 
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -63,89 +62,54 @@ public class MarsDataSourceImple implements MarsDataSource {
     }
 
 
-    public void makeCallToService(int roverId, int page, String earthDate){
+    public void makeCallToService(int roverId, int page, String earthDate) {
 
         ApiEndpointInterface service = client.create(ApiEndpointInterface.class);
 
-        switch (roverId){
-            case Constant.ROVER_CURIOUSITY:
-                Call<Dataset> callCuriosity = service.getPhotoByCuriosity(earthDate, page, Constant.API_KEY);
-                callCuriosity.enqueue(new Callback<Dataset>() {
-
-
-                    @Override
-                    public void onResponse(retrofit.Response<Dataset> response, Retrofit retrofit) {
-
-
-                        if (response.isSuccess()){
-                            bus.post(response.body());
-                            Log.d(LOG_TAG, "retrofit success: " + " : " + response.raw().toString());
-
-                        } else {
-                            Log.d(LOG_TAG, "retrofit failure: " + response.raw().toString());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Throwable t) {
-
-                    }
-                });
-                break;
-            case Constant.ROVER_OPPORTUNITY:
-                Call<Dataset> callOpportunity = service.getPhotoByOpportunity(earthDate, page, Constant.API_KEY);
-                callOpportunity.enqueue(new Callback<Dataset>() {
-                    @Override
-                    public void onResponse(retrofit.Response<Dataset> response, Retrofit retrofit) {
-
-                        if (response.isSuccess()){
-                            bus.post(response.body());
-                            Log.d(LOG_TAG, "retrofit success: " + " : " + response.raw().toString());
-
-                        } else {
-                            Log.d(LOG_TAG, "retrofit failure: " + response.raw().toString());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Throwable t) {
-
-                    }
-                });
-                break;
-            case Constant.ROVER_SPIRIT:
-                Call<Dataset> callSpirit = service.getPhotoBySpirit(earthDate,page,Constant.API_KEY);
-                callSpirit.enqueue(new Callback<Dataset>() {
-                    @Override
-                    public void onResponse(retrofit.Response<Dataset> response, Retrofit retrofit) {
-
-                        if (response.isSuccess()){
-                            bus.post(response.body());
-                            Log.d(LOG_TAG, "retrofit success: " + " : " + response.raw().toString());
-
-                        } else {
-                            Log.d(LOG_TAG, "retrofit failure: " + response.raw().toString());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Throwable t) {
-
-                    }
-                });
-                break;
-            default:
-                Toast.makeText(mContext, "This rover not in list", Toast.LENGTH_SHORT).show();
+        String imageType = getImageType(roverId);
+        if (imageType == null) {
+            Toast.makeText(mContext, "This rover not in list", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        Call<Dataset> callCuriosity = service.getPhotoByType(imageType, earthDate, page, Constant.API_KEY);
+        callCuriosity.enqueue(new Callback<Dataset>() {
+
+            @Override
+            public void onResponse(retrofit.Response<Dataset> response, Retrofit retrofit) {
+
+
+                if (response.isSuccess()) {
+                    bus.post(response.body());
+                    Log.d(LOG_TAG, "retrofit success: " + " : " + response.raw().toString());
+
+                } else {
+                    Log.d(LOG_TAG, "retrofit failure: " + response.raw().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
 
 
     }
 
 
-
-
-
-
+    private String getImageType(int roverId) {
+        switch (roverId) {
+            case Constant.ROVER_CURIOUSITY:
+                return Constant.IMAGE_CURIOUSITY;
+            case Constant.ROVER_OPPORTUNITY:
+                return Constant.IMAGE_OPPORTUNITY;
+            case Constant.ROVER_SPIRIT:
+                return Constant.IMAGE_SPIRIT;
+            default:
+                return null;
+        }
+    }
 
 
     /////////////////////// interface implemenatin ////////////////////////////////
