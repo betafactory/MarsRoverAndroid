@@ -11,6 +11,11 @@ public class Constant {
     public static final int ROVER_SPIRIT = 22;
     public static final int ROVER_OPPORTUNITY = 33;
 
+
+    public static final String IMAGE_CURIOUSITY = "curiosity";
+    public static final String IMAGE_SPIRIT = "spirit";
+    public static final String IMAGE_OPPORTUNITY = "opportunity";
+
     public static final String CURIOSITY_LANDING_DATE = "2012-08-08"; //done
     public static final String SPIRIT_LANDING_DATE = "2004-01-05"; //done
     public static final String OPPORTUNITY_LANDING_DATE = "2004-01-26"; //done
