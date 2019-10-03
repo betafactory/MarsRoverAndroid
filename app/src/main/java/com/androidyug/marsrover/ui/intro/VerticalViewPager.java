@@ -2,51 +2,51 @@ package com.androidyug.marsrover.ui.intro;
 
 
 import android.content.Context;
-        import android.content.res.Resources;
-        import android.content.res.TypedArray;
-        import android.database.DataSetObserver;
-        import android.graphics.Canvas;
-        import android.graphics.Rect;
-        import android.graphics.drawable.Drawable;
-        import android.os.Build;
-        import android.os.Bundle;
-        import android.os.Parcel;
-        import android.os.Parcelable;
-        import android.os.SystemClock;
-        import android.support.v4.os.ParcelableCompat;
-        import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-        import android.support.v4.view.AccessibilityDelegateCompat;
-        import android.support.v4.view.KeyEventCompat;
-        import android.support.v4.view.MotionEventCompat;
-        import android.support.v4.view.PagerAdapter;
-        import android.support.v4.view.VelocityTrackerCompat;
-        import android.support.v4.view.ViewCompat;
-        import android.support.v4.view.ViewConfigurationCompat;
-        import android.support.v4.view.ViewPager;
-        import android.support.v4.view.accessibility.AccessibilityEventCompat;
-        import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-        import android.support.v4.view.accessibility.AccessibilityRecordCompat;
-        import android.support.v4.widget.EdgeEffectCompat;
-        import android.util.AttributeSet;
-        import android.util.Log;
-        import android.view.FocusFinder;
-        import android.view.Gravity;
-        import android.view.KeyEvent;
-        import android.view.MotionEvent;
-        import android.view.SoundEffectConstants;
-        import android.view.VelocityTracker;
-        import android.view.View;
-        import android.view.ViewConfiguration;
-        import android.view.ViewGroup;
-        import android.view.ViewParent;
-        import android.view.accessibility.AccessibilityEvent;
-        import android.view.animation.Interpolator;
-        import android.widget.Scroller;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.database.DataSetObserver;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.SystemClock;
+import android.support.v4.os.ParcelableCompat;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.KeyEventCompat;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.VelocityTrackerCompat;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewConfigurationCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.accessibility.AccessibilityEventCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.view.accessibility.AccessibilityRecordCompat;
+import android.support.v4.widget.EdgeEffectCompat;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.FocusFinder;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.SoundEffectConstants;
+import android.view.VelocityTracker;
+import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
 
-        import java.lang.reflect.Method;
-        import java.util.ArrayList;
-        import java.util.Collections;
-        import java.util.Comparator;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by castorflex on 12/29/13.
@@ -482,7 +482,7 @@ public class VerticalViewPager extends ViewGroup {
 
     /**
      * Set a listener that will be invoked whenever the page changes or is incrementally
-     * scrolled. See {@link android.support.v4.view.ViewPager.OnPageChangeListener}.
+     * scrolled. See {@link ViewPager.OnPageChangeListener}.
      *
      * @param listener Listener to set
      */
@@ -491,7 +491,7 @@ public class VerticalViewPager extends ViewGroup {
     }
 
     /**
-     * Set a {@link android.support.v4.view.ViewPager.PageTransformer} that will be called for each attached page whenever
+     * Set a {@link ViewPager.PageTransformer} that will be called for each attached page whenever
      * the scroll position is changed. This allows the application to apply custom property
      * transformations to each page, overriding the default sliding look and feel.
      * <p/>
@@ -1131,7 +1131,7 @@ public class VerticalViewPager extends ViewGroup {
                     + " position=" + position + "}";
         }
 
-        public static final Parcelable.Creator<SavedState> CREATOR
+        public static final Creator<SavedState> CREATOR
                 = ParcelableCompat.newCreator(new ParcelableCompatCreatorCallbacks<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel in, ClassLoader loader) {
@@ -1720,9 +1720,9 @@ public class VerticalViewPager extends ViewGroup {
                  */
 
                 /*
-                * Locally do absolute value. mLastMotionY is set to the y value
-                * of the down event.
-                */
+                 * Locally do absolute value. mLastMotionY is set to the y value
+                 * of the down event.
+                 */
                 final int activePointerId = mActivePointerId;
                 if (activePointerId == INVALID_POINTER) {
                     // If we don't have a valid id, the touch down wasn't on content.
@@ -2738,7 +2738,7 @@ public class VerticalViewPager extends ViewGroup {
         /**
          * Gravity setting for use on decor views only:
          * Where to position the view page within the overall ViewPager
-         * container; constants are defined in {@link android.view.Gravity}.
+         * container; constants are defined in {@link Gravity}.
          */
         public int gravity;
 
