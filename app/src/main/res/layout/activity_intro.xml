@@ -4,12 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.androidyug.marsrover.ui.intro.IntroActivity">
+    tools:context="com.androidyug.marsrover.ui.intro.IntroActivity"
+    android:id="@+id/frameLayout">
 
     <SurfaceView
         android:id="@+id/sv_starfield"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_conversion_absoluteHeight="731dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_conversion_absoluteWidth="411dp" />
    <!-- <ImageView
         android:id="@+id/iv_bg"
         android:layout_width="match_parent"
@@ -18,8 +23,12 @@
     <com.androidyug.marsrover.ui.intro.VerticalViewPager
         android:id="@+id/vp_intro"
         android:background="@android:color/transparent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_conversion_absoluteHeight="731dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_conversion_absoluteWidth="411dp">
 
     </com.androidyug.marsrover.ui.intro.VerticalViewPager>
 

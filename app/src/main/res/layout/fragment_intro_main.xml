@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:oak="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@android:color/transparent"
+    android:id="@+id/linearLayout5"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
 
     <oak.svg.AnimatedSvgView
-        android:layout_gravity="center"
         android:id="@+id/animated_svg_view"
-        android:layout_height="wrap_content"
-        android:layout_width="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="117dp"
+        android:layout_height="91dp"
+        oak:oakSvgFillStart="1200"
+        oak:oakSvgFillTime="2000"
         oak:oakSvgImageSizeX="1024"
         oak:oakSvgImageSizeY="1024"
         oak:oakSvgTraceTime="2000"
         oak:oakSvgTraceTimePerGlyph="2000"
-        oak:oakSvgFillStart="1200"
-        oak:oakSvgFillTime="2000"/>
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="35dp" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MARS ROVER"
-        android:textSize="30sp"
-        android:textColor="@android:color/white"
         android:padding="8dp"
+        android:text="MARS ROVER"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
         android:visibility="gone"
-        tools:visibility="visible"
-        android:layout_gravity="center"
-        />
-
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="141dp"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/tv_scroll_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        tools:visibility="visible"
-        android:text="SCROLL DOWN"
         android:padding="4dp"
+        android:text="SCROLL DOWN"
         android:textColor="@android:color/white"
         android:textSize="12sp"
-        />
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="216dp"
+        tools:visibility="visible" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

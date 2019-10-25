@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@android:color/black"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout11"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
 
 
     <FrameLayout
-        tools:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/fl_curiosity"
-        >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="20dp"
-            >
+            android:orientation="vertical"
+            android:id="@+id/linearLayout12">
+
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@android:color/white"
                 android:src="@drawable/rover_curiousity"
-                />
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp"
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_conversion_absoluteWidth="0dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -38,89 +44,92 @@
                 android:text="CURIOSITY"
                 android:textColor="@android:color/white"
                 android:textSize="22sp"
-                android:layout_gravity="center"
-                />
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_conversion_absoluteWidth="0dp" />
 
             <TextView
-                android:layout_width="300dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:singleLine="false"
                 android:padding="4dp"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
+                android:singleLine="false"
                 android:text="@string/curisosity_desc"
-                />
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_conversion_absoluteWidth="0dp" />
 
 
             <RelativeLayout
-                android:layout_width="300dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center">
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_conversion_absoluteWidth="0dp">
 
                 <TextView
+                    android:id="@+id/tv_text_landing_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/tag"
+                    android:padding="4dp"
                     android:text="Landing Date : August 6, 2012"
-                    android:padding="4dp"
-                    android:background="@drawable/tag"
-                    android:textColor="@android:color/white"
-                    android:id="@+id/tv_text_landing_date" />
+                    android:textColor="@android:color/white" />
 
                 <TextView
+                    android:id="@+id/tv_text_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status: Active"
-                    android:id="@+id/tv_text_status"
                     android:layout_marginLeft="4dp"
-                    android:padding="4dp"
-                    android:background="@drawable/tag"
-                    android:textColor="@android:color/white"
+                    android:layout_toEndOf="@+id/tv_text_landing_date"
                     android:layout_toRightOf="@+id/tv_text_landing_date"
-                    android:layout_toEndOf="@+id/tv_text_landing_date" />
+                    android:background="@drawable/tag"
+                    android:padding="4dp"
+                    android:text="Status: Active"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/tv_text_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Weight: 899Kg"
-                    android:layout_alignParentLeft="true"
-                    android:padding="4dp"
-                    android:background="@drawable/tag"
                     android:layout_below="@id/tv_text_landing_date"
-                    android:textColor="@android:color/white"
-                    />
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/tag"
+                    android:padding="4dp"
+                    android:text="Weight: 899Kg"
+                    android:textColor="@android:color/white" />
 
                 <TextView
+                    android:id="@+id/tv_text_dimenson"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_text_dimenson"
+                    android:layout_below="@id/tv_text_status"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    android:background="@drawable/tag"
-                    android:text="Dimen: 2.9m * 2.7m * 2.2m"
-                    android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/tv_text_weight"
                     android:layout_toEndOf="@+id/tv_text_weight"
-                    android:layout_below="@id/tv_text_status"
-                    />
+                    android:layout_toRightOf="@+id/tv_text_weight"
+                    android:background="@drawable/tag"
+                    android:padding="4dp"
+                    android:text="Dimen: 2.9m * 2.7m * 2.2m"
+                    android:textColor="@android:color/white" />
 
                 <TextView
+                    android:id="@+id/tv_total_cam"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_total_cam"
-                    android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    android:background="@drawable/tag"
-                    android:text="Total Camera: 17"
-                    android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/tv_text_landing_date"
                     android:layout_below="@id/tv_text_weight"
                     android:layout_alignParentLeft="true"
-                    />
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@+id/tv_text_landing_date"
+                    android:background="@drawable/tag"
+                    android:padding="4dp"
+                    android:text="Total Camera: 17"
+                    android:textColor="@android:color/white" />
 
             </RelativeLayout>
 
@@ -131,130 +140,126 @@
             android:id="@+id/btn_see_photo_curiosity"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners"
-            android:textColor="@android:color/holo_orange_light"
-            android:layout_marginBottom="20dp"
             android:layout_gravity="bottom|center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corners"
             android:padding="14dp"
             android:text="SEE PHOTOS"
-            />
+            android:textColor="@android:color/holo_orange_light" />
 
     </FrameLayout>
 
 
     <FrameLayout
-        tools:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/fl_spirit"
-        >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="20dp"
-            >
+            android:orientation="vertical">
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@android:color/white"
                 android:src="@drawable/rover_spirit"
-                />
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:padding="4dp"
                 android:text="SPIRIT"
-                android:textSize="20sp"
                 android:textColor="@android:color/white"
-                android:layout_gravity="center"
-                />
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:singleLine="false"
                 android:padding="4dp"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
+                android:singleLine="false"
                 android:text="@string/spirit_desc"
-                />
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
 
             <RelativeLayout
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
 
                 <TextView
+                    android:id="@+id/tv_text_spirit_landing_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/tag_blue"
+                    android:padding="4dp"
                     android:text="Landing Date : 04 Jan 2004"
-                    android:padding="4dp"
-                    android:background="@drawable/tag_blue"
-                    android:textColor="@android:color/white"
-                    android:id="@+id/tv_text_spirit_landing_date" />
+                    android:textColor="@android:color/white" />
 
                 <TextView
+                    android:id="@+id/tv_text_spirit_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status: Dead"
-                    android:id="@+id/tv_text_spirit_status"
                     android:layout_marginLeft="4dp"
-                    android:padding="4dp"
-                    android:background="@drawable/tag_blue"
-                    android:textColor="@android:color/white"
+                    android:layout_toEndOf="@+id/tv_text_spirit_landing_date"
                     android:layout_toRightOf="@+id/tv_text_spirit_landing_date"
-                    android:layout_toEndOf="@+id/tv_text_spirit_landing_date" />
+                    android:background="@drawable/tag_blue"
+                    android:padding="4dp"
+                    android:text="Status: Dead"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/tv_text_spirit_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Weight: 185Kg"
-                    android:layout_alignParentLeft="true"
-                    android:padding="4dp"
-                    android:background="@drawable/tag_blue"
                     android:layout_below="@id/tv_text_spirit_landing_date"
-                    android:textColor="@android:color/white"
-                    />
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/tag_blue"
+                    android:padding="4dp"
+                    android:text="Weight: 185Kg"
+                    android:textColor="@android:color/white" />
 
                 <TextView
+                    android:id="@+id/tv_text_spirit_dimenson"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_text_spirit_dimenson"
+                    android:layout_below="@id/tv_text_spirit_status"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    android:background="@drawable/tag_blue"
-                    android:text="Dimen: 1.6m * 2.3m * 1.5m"
-                    android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/tv_text_spirit_weight"
                     android:layout_toEndOf="@+id/tv_text_spirit_weight"
-                    android:layout_below="@id/tv_text_spirit_status"
-                    />
+                    android:layout_toRightOf="@+id/tv_text_spirit_weight"
+                    android:background="@drawable/tag_blue"
+                    android:padding="4dp"
+                    android:text="Dimen: 1.6m * 2.3m * 1.5m"
+                    android:textColor="@android:color/white" />
 
                 <TextView
+                    android:id="@+id/tv_total_spirit_cam"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_total_spirit_cam"
-                    android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    android:background="@drawable/tag_blue"
-                    android:text="Distance Covered: 7.73 km (4.8 m)"
-                    android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/tv_text_spirit_weight"
-                    android:layout_toEndOf="@+id/tv_text_spirit_weight"
                     android:layout_below="@id/tv_text_spirit_weight"
                     android:layout_alignParentLeft="true"
-                    />
+                    android:layout_marginTop="4dp"
+                    android:layout_toEndOf="@+id/tv_text_spirit_weight"
+                    android:layout_toRightOf="@+id/tv_text_spirit_weight"
+                    android:background="@drawable/tag_blue"
+                    android:padding="4dp"
+                    android:text="Distance Covered: 7.73 km (4.8 m)"
+                    android:textColor="@android:color/white" />
 
             </RelativeLayout>
 
@@ -265,22 +270,25 @@
             android:id="@+id/btn_see_photo_spirit"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners_spirit"
-            android:textColor="@android:color/holo_blue_light"
-            android:layout_marginBottom="20dp"
             android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corners_spirit"
             android:padding="14dp"
             android:text="SEE PHOTOS"
-            />
+            android:textColor="@android:color/holo_blue_light" />
 
     </FrameLayout>
 
 
     <FrameLayout
-        tools:visibility="visible"
         android:id="@+id/fl_opportunity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -290,108 +298,102 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:scaleType="centerCrop"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="@android:color/white"
                     android:src="@drawable/rover_opportunity"
-                    />
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="2dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:padding="4dp"
                     android:text="OPPORTUNITY"
-                    android:textSize="20sp"
                     android:textColor="@android:color/white"
-                    android:layout_gravity="center"
-                    />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="4dp"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/white"
                     android:text="@string/opportunity_desc"
-                    />
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
 
                 <RelativeLayout
                     android:layout_width="300dp"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/tv_text_oppor_landing_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/tag_green"
+                        android:padding="4dp"
                         android:text="Landing Date: 25 Jan, 2004"
-                        android:padding="4dp"
-                        android:background="@drawable/tag_green"
-                        android:textColor="@android:color/white"
-                        android:id="@+id/tv_text_oppor_landing_date" />
+                        android:textColor="@android:color/white" />
 
                     <TextView
+                        android:id="@+id/tv_text_oppor_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Status: Active"
-                        android:id="@+id/tv_text_oppor_status"
                         android:layout_marginLeft="4dp"
-                        android:padding="4dp"
-                        android:background="@drawable/tag_green"
-                        android:textColor="@android:color/white"
+                        android:layout_toEndOf="@+id/tv_text_oppor_landing_date"
                         android:layout_toRightOf="@+id/tv_text_oppor_landing_date"
-                        android:layout_toEndOf="@+id/tv_text_oppor_landing_date" />
+                        android:background="@drawable/tag_green"
+                        android:padding="4dp"
+                        android:text="Status: Active"
+                        android:textColor="@android:color/white" />
 
                     <TextView
                         android:id="@+id/tv_text_oppor_weight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Weight: 185kg"
-                        android:layout_alignParentLeft="true"
-                        android:padding="4dp"
-                        android:background="@drawable/tag_green"
                         android:layout_below="@id/tv_text_oppor_landing_date"
-                        android:textColor="@android:color/white"
-                        />
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/tag_green"
+                        android:padding="4dp"
+                        android:text="Weight: 185kg"
+                        android:textColor="@android:color/white" />
 
                     <TextView
+                        android:id="@+id/tv_text_oppor_dimenson"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_text_oppor_dimenson"
+                        android:layout_below="@id/tv_text_oppor_status"
                         android:layout_marginLeft="4dp"
                         android:layout_marginTop="4dp"
-                        android:padding="4dp"
-                        android:background="@drawable/tag_green"
-                        android:text="Dimen: 2.3m * 1.6m * 1.5 m"
-                        android:textColor="@android:color/white"
-                        android:layout_toRightOf="@+id/tv_text_oppor_weight"
                         android:layout_toEndOf="@+id/tv_text_oppor_weight"
-                        android:layout_below="@id/tv_text_oppor_status"
-                        />
+                        android:layout_toRightOf="@+id/tv_text_oppor_weight"
+                        android:background="@drawable/tag_green"
+                        android:padding="4dp"
+                        android:text="Dimen: 2.3m * 1.6m * 1.5 m"
+                        android:textColor="@android:color/white" />
 
                     <TextView
+                        android:id="@+id/tv_total_oppor_cam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_total_oppor_cam"
-                        android:layout_marginTop="4dp"
-                        android:padding="4dp"
-                        android:background="@drawable/tag_green"
-                        android:text="Distance Covered: 42.45km (as of 21 Aug 2015)"
-                        android:textColor="@android:color/white"
-                        android:layout_toRightOf="@+id/tv_text_oppor_weight"
-                        android:layout_toEndOf="@+id/tv_text_oppor_weight"
                         android:layout_below="@id/tv_text_oppor_weight"
                         android:layout_alignParentLeft="true"
-                        />
+                        android:layout_marginTop="4dp"
+                        android:layout_toEndOf="@+id/tv_text_oppor_weight"
+                        android:layout_toRightOf="@+id/tv_text_oppor_weight"
+                        android:background="@drawable/tag_green"
+                        android:padding="4dp"
+                        android:text="Distance Covered: 42.45km (as of 21 Aug 2015)"
+                        android:textColor="@android:color/white" />
 
                 </RelativeLayout>
 
@@ -403,17 +405,15 @@
             android:id="@+id/btn_see_photo_opportunity"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners_opportunity"
-            android:textColor="@color/green_a400"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corners_opportunity"
             android:padding="14dp"
             android:text="SEE PHOTOS"
-            />
+            android:textColor="@color/green_a400" />
 
 
     </FrameLayout>
 
 
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
